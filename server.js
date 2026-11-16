@@ -70,7 +70,8 @@ app.use((err,req,res,next)=>{
     const message = err.message || 'Internal Server Error';
     res.status(status).send(message);
 });
-const PORT = 9972;
-app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}/api/v1/patients`);
+const PORT = process.env.PORT || 9972;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
 });
